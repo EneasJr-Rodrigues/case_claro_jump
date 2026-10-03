@@ -1,0 +1,19 @@
+{
+    "metricas": {
+        "auc_roc": 0.6878,
+        "ks_stat": 26.3,
+        "mcc": 0.2391,
+        "cv_auc_medio": 0.6868
+    },
+    "eda": {
+        "insight_regional": "SP e MG lideram a retenção (~30%). Sul apresenta o maior risco de churn (23-25%).",
+        "insight_solar": "A ferramenta Solar (29.8%) supera drasticamente o Catálogo Legado (24.0%)."
+    },
+    "top_features": [
+        "id_produto_tv_m0",
+        "meio_fisico_brownfield_Nao_Informado",
+        "valor_tv_m0",
+        "valor_bl_m0",
+        "id_produto_bl_m0"
+    ]
+}

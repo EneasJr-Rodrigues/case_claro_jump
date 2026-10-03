@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/workspace
+    container_name: jupyter_case_claro
+    restart: unless-stopped
+
+  dashboard:
+    image: python:3.11-alpine
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./dashboard:/workspace/dashboard
+    working_dir: /workspace/dashboard
+    command: python -m http.server 8000
+    container_name: dashboard_case_claro
+    restart: unless-stopped
