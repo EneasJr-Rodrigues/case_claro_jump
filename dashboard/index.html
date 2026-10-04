@@ -74,18 +74,34 @@
         </div>
 
         <!-- Coluna Direita: SHAP & Features -->
-        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 class="text-2xl font-bold mb-2">Perfil de Retenção (Explicabilidade do Modelo)</h2>
-            <p class="text-sm text-gray-500 mb-6">A Inteligência Artificial identificou as variáveis mais críticas que determinam se o cliente aceita ou recusa a oferta.</p>
+        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+            <h2 class="text-2xl font-bold mb-2">Explicabilidade do Modelo (Machine Learning)</h2>
+            <p class="text-sm text-gray-500 mb-6">Da visão macro de negócios até a decomposição matemática individual de cada cliente (Cabo de Guerra).</p>
             
-            <!-- Imagem SHAP -->
-            <div class="bg-gray-50 p-4 rounded-xl border mb-6 flex justify-center">
-                <img src="shap_plot.png" alt="Feature Importance SHAP" class="max-h-[500px] object-contain rounded-lg shadow-sm">
+            <!-- Grid de Imagens SHAP (Lado a Lado) -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
+                <!-- Gráfico Global -->
+                <div class="bg-gray-50 p-5 rounded-xl border flex flex-col items-center shadow-inner h-full">
+                    <h3 class="font-bold text-sm text-gray-800 mb-2 uppercase tracking-wide">Visão Macro (Comportamento da Base)</h3>
+                    <img src="shap_plot.png" alt="Feature Importance SHAP" class="w-full h-auto object-contain rounded-lg mix-blend-multiply my-auto">
+                    <div class="mt-auto bg-white p-3 rounded border w-full text-xs text-gray-600 leading-relaxed shadow-sm">
+                        <strong class="text-red-600">Leitura Analítica:</strong> Cada ponto é um cliente. Mostra o impacto global na base toda. Cores indicam o valor do dado bruto (Vermelho = Alto, Azul = Baixo). Pontos caindo à direita aumentam a chance de retenção, à esquerda puxam para o cancelamento.
+                    </div>
+                </div>
+                
+                <!-- Gráfico Local (Waterfall) -->
+                <div class="bg-gray-50 p-5 rounded-xl border flex flex-col items-center shadow-inner h-full">
+                    <h3 class="font-bold text-sm text-gray-800 mb-2 uppercase tracking-wide">Visão Micro (Decomposição do Cliente X)</h3>
+                    <img src="shap_waterfall.png" alt="SHAP Waterfall" class="w-full h-auto object-contain rounded-lg mix-blend-multiply my-auto">
+                    <div class="mt-auto bg-white p-3 rounded border w-full text-xs text-gray-600 leading-relaxed shadow-sm">
+                        <strong class="text-red-600">Leitura Analítica:</strong> Auditoria matemática de um <strong>único cliente</strong>. O modelo parte da média da base (linha zero abaixo) e soma forças vermelhas (motores de retenção) e subtrai forças azuis (âncoras de cancelamento) até o saldo final no topo.
+                    </div>
+                </div>
             </div>
 
             <!-- Top Features -->
-            <div>
-                <h3 class="font-bold text-lg mb-3">Top 5 Drivers de Movimentação:</h3>
+            <div class="mt-auto">
+                <h3 class="font-bold text-lg mb-3">Top 5 Drivers Gerais de Movimentação:</h3>
                 <ul id="top-features-list" class="space-y-2">
                     <!-- Preenchido via JS -->
                 </ul>
